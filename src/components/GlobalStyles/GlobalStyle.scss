@@ -7,9 +7,13 @@ html {
 * {
     box-sizing: border-box;
 }
+:root {
+    
+}
 body {
     font-family: 'Lato', sans-serif;
     font-size: 24rem;
     line-height: 15rem;
     text-rendering: optimizeSpeed;
+    margin: 0;
 }
