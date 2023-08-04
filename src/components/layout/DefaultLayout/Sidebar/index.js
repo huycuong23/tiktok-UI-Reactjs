@@ -15,6 +15,14 @@ function Sidebar() {
         <h2>Sidebar</h2>
         <h2>Sidebar</h2>
         <h2>Sidebar</h2>
+        <h2>Sidebar</h2>
+        <h2>Sidebar</h2>
+        <h2>Sidebar</h2>
+        <h2>Sidebar</h2>
+        <h2>Sidebar</h2>
+        <h2>Sidebar</h2>
+        <h2>Sidebar</h2>
+        <h2>Sidebar</h2>
     </aside>
     );
 }

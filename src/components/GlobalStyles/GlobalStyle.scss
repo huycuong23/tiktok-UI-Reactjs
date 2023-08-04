@@ -7,13 +7,17 @@ html {
 * {
     box-sizing: border-box;
 }
-:root {
-    
-}
 body {
     font-family: 'Lato', sans-serif;
     font-size: 24rem;
     line-height: 15rem;
     text-rendering: optimizeSpeed;
     margin: 0;
+}
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba($color: #ccc, $alpha: .5);
 }
