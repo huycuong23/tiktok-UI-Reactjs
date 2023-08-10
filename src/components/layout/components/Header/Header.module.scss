@@ -16,10 +16,13 @@
     padding: 0 24px 0 16px;
     align-items: center;
 }
+.search-result, 
+.search {
+    width: 500px;
+}
 .search {
     display: flex;
     height: 46px;
-    width: 500px;
     border-radius: 60px;
     padding: 0 0 0 10px;
     background-color: rgba(22, 24, 35, .06);
@@ -140,4 +143,8 @@
     cursor: pointer;
     width: 35px;
     margin-left: 10px;
+}
+.search-title{
+    margin: 0;
+    padding: 15px;
 }

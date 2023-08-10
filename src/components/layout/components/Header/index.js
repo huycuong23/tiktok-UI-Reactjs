@@ -1,7 +1,11 @@
 import styles from './Header.module.scss';
 import images from '~/assets/images';
+import { Wrapper as PropWrapper } from '~/Prop';
+import AccountItem from '~/AccountItem';
 
 import classNames from 'classnames/bind';
+import React from 'react';
+import Tippy from '@tippyjs/react/headless';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faCircleXmark,
@@ -19,21 +23,36 @@ function Header() {
                 <div className={cx('logo')}>
                     <img src={images.logo} alt="logo tiktok" />
                 </div>
-                <div className={cx('search')}>
-                    <input
-                        className={cx('search-inp')}
-                        type="text"
-                        placeholder="Search accounts and videos "
-                        spellCheck={false}
-                    />
-                    <button className={cx('search-clr')}>
-                        <FontAwesomeIcon icon={faCircleXmark} />
-                    </button>
-                    <FontAwesomeIcon className={cx('search-ld')} icon={faSpinner} />
-                    <button className={cx('search-btn')}>
-                        <FontAwesomeIcon icon={faMagnifyingGlass} />
-                    </button>
-                </div>
+                <Tippy
+                interactive={true}
+                visible={true}
+                render={attrs => (
+                    <div className={cx("search-result")} tabIndex="-1" {...attrs}>
+                      <PropWrapper>
+                        <h4 className={cx("search-title")}>Accounts</h4>
+                        <AccountItem />
+                        <AccountItem />
+                        <AccountItem />
+                        <AccountItem />
+                      </PropWrapper>
+                    </div>
+                  )}>
+                    <div className={cx('search')}>
+                        <input
+                            className={cx('search-inp')}
+                            type="text"
+                            placeholder="Search accounts and videos "
+                            spellCheck={false}
+                        />
+                        <button className={cx('search-clr')}>
+                            <FontAwesomeIcon icon={faCircleXmark} />
+                        </button>
+                        <FontAwesomeIcon className={cx('search-ld')} icon={faSpinner} />
+                        <button className={cx('search-btn')}>
+                            <FontAwesomeIcon icon={faMagnifyingGlass} />
+                        </button>
+                    </div>
+                </Tippy>
                 <div className={cx('notication')}>
                     <button className={cx('upload')}>
                         <FontAwesomeIcon icon={faPlus} />
@@ -49,7 +68,7 @@ function Header() {
                 </div>
             </div>
         </header>
-    )
+    );
 }
 
 export default Header;
