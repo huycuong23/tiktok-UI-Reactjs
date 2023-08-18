@@ -1,7 +1,8 @@
 import styles from './Header.module.scss';
 import images from '~/assets/images';
 import { Wrapper as PropWrapper } from '~/Prop';
-import AccountItem from '~/AccountItem';
+import AccountItem from '~/components/AccountItem';
+import Button from '~/components/Button';
 
 import classNames from 'classnames/bind';
 import React from 'react';
@@ -12,6 +13,7 @@ import {
     faSpinner,
     faMagnifyingGlass,
     faPlus,
+    faEllipsisVertical,
 } from '@fortawesome/free-solid-svg-icons';
 import { faPaperPlane, faEnvelope } from '@fortawesome/free-regular-svg-icons';
 
@@ -24,19 +26,20 @@ function Header() {
                     <img src={images.logo} alt="logo tiktok" />
                 </div>
                 <Tippy
-                interactive={true}
-                visible={true}
-                render={attrs => (
-                    <div className={cx("search-result")} tabIndex="-1" {...attrs}>
-                      <PropWrapper>
-                        <h4 className={cx("search-title")}>Accounts</h4>
-                        <AccountItem />
-                        <AccountItem />
-                        <AccountItem />
-                        <AccountItem />
-                      </PropWrapper>
-                    </div>
-                  )}>
+                    interactive={true}
+                    visible={false}
+                    render={(attrs) => (
+                        <div className={cx('search-result')} tabIndex="-1" {...attrs}>
+                            <PropWrapper>
+                                <h4 className={cx('search-title')}>Accounts</h4>
+                                <AccountItem />
+                                <AccountItem />
+                                <AccountItem />
+                                <AccountItem />
+                            </PropWrapper>
+                        </div>
+                    )}
+                >
                     <div className={cx('search')}>
                         <input
                             className={cx('search-inp')}
@@ -53,7 +56,7 @@ function Header() {
                         </button>
                     </div>
                 </Tippy>
-                <div className={cx('notication')}>
+                {/* <div className={cx('notication')}>
                     <button className={cx('upload')}>
                         <FontAwesomeIcon icon={faPlus} />
                         <p>Tải lên</p>
@@ -65,6 +68,11 @@ function Header() {
                         alt="avatar"
                         className={cx('avatar')}
                     />
+                </div> */}
+                <div className={cx('actions')}>
+                    <Button tranparent >Upload</Button>
+                    <Button primary>Log in</Button>
+                    <FontAwesomeIcon className={cx("actions_threedots")} icon={faEllipsisVertical} />
                 </div>
             </div>
         </header>

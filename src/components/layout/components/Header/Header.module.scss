@@ -5,6 +5,7 @@
     display: flex;
     justify-content: center;
     position: fixed;
+    top: 0;
 }
 
 .inner {
@@ -147,4 +148,16 @@
 .search-title{
     margin: 0;
     padding: 15px;
+}
+.actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.actions_threedots {
+    padding: 15px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 22rem;
+    opacity: 0.6;
 }

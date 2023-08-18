@@ -1,5 +1,4 @@
 .wrapper {
-    padding-left: 10px;
     margin-right: 10px;
     width: 220px;
     max-height: 100vh;
@@ -12,6 +11,7 @@
     flex-direction: column;
     max-height: 100vh;
     width: 220px;
+    padding-left: 10px;
     mask-image: linear-gradient(to top, transparent, black),
         linear-gradient(to left, transparent 17px, black 17px);
     mask-size: 100% 20000px;
