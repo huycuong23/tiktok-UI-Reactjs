@@ -2,13 +2,23 @@
     font-size: 16rem;
     font-weight: 700;
     min-width: 100px;
-    padding: 10px 14px;
+    padding: 9px 14px;
     border-radius: 4px;
     cursor: pointer;
     user-select: none;
+    display: block;
     &.disabled {
         pointer-events: none;
     }
+}
+.icon + .title,
+.title + .icon {
+    margin-left: 4px;
+}
+.icon {
+    display: inline-block;
+    min-width: 20px;
+    text-align: center;
 }
 
 .primary {
@@ -29,10 +39,8 @@
 }
 .tranparent {
     background-color: transparent;
-    font-size: 20rem;
-    &:hover {
-        text-decoration: underline;
-    }
+    font-size: 18rem;
+    
 }
 .rounded {
     border-radius: 9999999px;

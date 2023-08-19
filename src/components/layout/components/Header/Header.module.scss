@@ -17,7 +17,7 @@
     padding: 0 24px 0 16px;
     align-items: center;
 }
-.search-result, 
+.search-result,
 .search {
     width: 500px;
 }
@@ -26,12 +26,12 @@
     height: 46px;
     border-radius: 60px;
     padding: 0 0 0 10px;
-    background-color: rgba(22, 24, 35, .06);
+    background-color: rgba(22, 24, 35, 0.06);
     align-items: center;
     border: 1px solid transparent;
 }
 .search:hover {
-    border: 1px solid rgba(0, 0, 0, .2);
+    border: 1px solid rgba(0, 0, 0, 0.2);
 }
 .search:hover > .search-btn {
     background-color: rgba(22, 24, 35, 0.05);
@@ -116,12 +116,12 @@
     font-size: 16px;
     font-weight: 550;
     cursor: pointer;
-    border: 1px solid rgba(0, 0, 0, .2);
+    border: 1px solid rgba(0, 0, 0, 0.2);
 }
 .upload:hover {
     background-color: rgba(22, 24, 35, 0.05);
 }
-.upload  p {
+.upload p {
     margin-left: 8px;
     margin-top: 18px;
 }
@@ -145,7 +145,7 @@
     width: 35px;
     margin-left: 10px;
 }
-.search-title{
+.search-title {
     margin: 0;
     padding: 15px;
 }
@@ -154,10 +154,16 @@
     align-items: center;
     justify-content: center;
 }
-.actions_threedots {
-    padding: 15px;
+.actions_more {
+    padding: 4px 15px;
     margin-left: 10px;
     cursor: pointer;
     font-size: 22rem;
     opacity: 0.6;
+    background-color: transparent;
+}
+.actions-upload {
+    &:hover {
+        text-decoration: underline;
+    }
 }

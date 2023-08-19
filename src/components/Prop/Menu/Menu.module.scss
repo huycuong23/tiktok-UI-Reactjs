@@ -1,0 +1,28 @@
+
+.content {
+    width: 224px;
+    position: relative;
+    &::after {
+        content: '';        
+        border-top: 10px solid transparent;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-bottom: 15px solid white;
+        filter: blur(20);
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translateX(-40%) translateY(-90%);
+    }
+}
+.button-item {
+    padding: 15px;
+    font-weight: 500;
+    width: 100%;
+    text-align: start;
+    display: block;
+    border-radius: unset;
+    &:hover {
+        background-color: rgba( 22,24,35,0.03);
+    }
+}

@@ -4,6 +4,7 @@ import styles from './Button.module.scss';
 
 const cx = classNames.bind(styles);
 function Button({
+    className,
     to,
     href,
     children,
@@ -13,6 +14,8 @@ function Button({
     outline,
     tranparent,
     primary,
+    iconleft,
+    iconright,
     ...passProps
 }) {
     let Comp = 'button';
@@ -34,16 +37,18 @@ function Button({
         Comp = 'a';
         prop.href = href;
     }
-    const classes = cx('Wrapper', {
+    const classes = cx('Wrapper', className, {
         primary,
         outline,
         tranparent,
         disabled,
-        rounded
+        rounded,
     });
     return (
         <Comp {...prop} className={classes}>
-            <span>{children}</span>
+            {iconleft && <span className={cx("icon")}>{iconleft}</span>}
+            <span className={cx("title")}>{children}</span>
+            {iconright && <span className={cx("icon")}>{iconright}</span>}
         </Comp>
     );
 }

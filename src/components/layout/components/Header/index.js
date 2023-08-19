@@ -1,8 +1,9 @@
 import styles from './Header.module.scss';
 import images from '~/assets/images';
-import { Wrapper as PropWrapper } from '~/Prop';
+import { Wrapper as PropWrapper } from '~/components/Prop';
 import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
+import Menu from '~/components/Prop/Menu';
 
 import classNames from 'classnames/bind';
 import React from 'react';
@@ -14,10 +15,28 @@ import {
     faMagnifyingGlass,
     faPlus,
     faEllipsisVertical,
+    faEarthAsia,
+    faCircleQuestion,
+    faKeyboard,
 } from '@fortawesome/free-solid-svg-icons';
 import { faPaperPlane, faEnvelope } from '@fortawesome/free-regular-svg-icons';
 
 const cx = classNames.bind(styles);
+const MENU_ITEM = [
+    {
+        icon: <FontAwesomeIcon icon={faEarthAsia} />,
+        title: 'English',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faCircleQuestion} />,
+        title: 'Feedback and help',
+        to: "/feedback"
+    },
+    {
+        icon: <FontAwesomeIcon icon={faKeyboard} />,
+        title: 'Keyboard shortcuts',
+    },
+];
 function Header() {
     return (
         <header className={cx('wrapper')}>
@@ -70,9 +89,15 @@ function Header() {
                     />
                 </div> */}
                 <div className={cx('actions')}>
-                    <Button tranparent >Upload</Button>
+                    <Button className={cx("actions-upload")} icon={<FontAwesomeIcon icon={faPlus} />} tranparent to="/upload">
+                        Upload
+                    </Button>
                     <Button primary>Log in</Button>
-                    <FontAwesomeIcon className={cx("actions_threedots")} icon={faEllipsisVertical} />
+                    <Menu items={MENU_ITEM}>
+                        <div className={cx('actions_more')}>
+                            <FontAwesomeIcon icon={faEllipsisVertical} />
+                        </div>
+                    </Menu>
                 </div>
             </div>
         </header>
