@@ -1,9 +1,13 @@
-
 .content {
     width: 224px;
     position: relative;
+    max-height: 500px;
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+        display: none;
+    }
     &::after {
-        content: '';        
+        content: '';
         border-top: 10px solid transparent;
         border-left: 10px solid transparent;
         border-right: 10px solid transparent;
@@ -22,7 +26,36 @@
     text-align: start;
     display: block;
     border-radius: unset;
+    height: 48px;
     &:hover {
-        background-color: rgba( 22,24,35,0.03);
+        background-color: rgba(22, 24, 35, 0.03);
     }
+}
+.header {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    margin-bottom: 50px;
+    background-color: white;
+    width: 100%;
+    top: 0;
+}
+
+.back-btn {
+    background-color: transparent;
+    width: 50px;
+    height: 40px;
+    transform: translateX(20%);
+    cursor: pointer;
+    &:hover {
+        background-color: rgba(22, 24, 35, 0.03);
+    }
+}
+.header-title {
+    font-size: 18px;
+    margin: 0;
+    transform: translateX(30%);
+}
+.content-select {
+    height: 40px;
 }

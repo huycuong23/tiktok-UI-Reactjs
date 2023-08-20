@@ -26,11 +26,26 @@ const MENU_ITEM = [
     {
         icon: <FontAwesomeIcon icon={faEarthAsia} />,
         title: 'English',
+        children: {
+            title: 'Language',
+            data: [
+                {
+                    type: 'language',
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+            ],
+        },
     },
     {
         icon: <FontAwesomeIcon icon={faCircleQuestion} />,
         title: 'Feedback and help',
-        to: "/feedback"
+        to: '/feedback',
     },
     {
         icon: <FontAwesomeIcon icon={faKeyboard} />,
@@ -38,6 +53,14 @@ const MENU_ITEM = [
     },
 ];
 function Header() {
+    const handleChange = (menuItem) => {
+        switch (menuItem.type) {
+            case 'language':
+            // changer language handle
+            break;
+            default:
+        }
+    };
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
@@ -89,11 +112,16 @@ function Header() {
                     />
                 </div> */}
                 <div className={cx('actions')}>
-                    <Button className={cx("actions-upload")} icon={<FontAwesomeIcon icon={faPlus} />} tranparent to="/upload">
+                    <Button
+                        className={cx('actions-upload')}
+                        icon={<FontAwesomeIcon icon={faPlus} />}
+                        tranparent
+                        to="/upload"
+                    >
                         Upload
                     </Button>
                     <Button primary>Log in</Button>
-                    <Menu items={MENU_ITEM}>
+                    <Menu items={MENU_ITEM} onChange={handleChange}>
                         <div className={cx('actions_more')}>
                             <FontAwesomeIcon icon={faEllipsisVertical} />
                         </div>

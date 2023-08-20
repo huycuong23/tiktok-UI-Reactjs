@@ -3,17 +3,29 @@ import classNames from 'classnames/bind';
 import styles from './Menu.module.scss';
 import { Wrapper as PropWrapper } from '~/components/Prop';
 import MenuItem from './MenuItem';
-import tippy from 'tippy.js';
-import 'tippy.js/animations/scale.css';
+import Header from './Header';
+import { useState } from 'react';
 
 const cx = classNames.bind(styles);
-tippy('.content', {
-    animation: 'scale',
-});
-function Menu({ children, items = [] }) {
+function Menu({ children, items = [], onChange }) {
+    const [history, setHistory] = useState([{ data: items }]);
+    const current = history[history.length - 1];
     const renderItems = () => {
-        return items.map((item, i) => {
-            return <MenuItem key={i} data={item} />;
+        return current.data.map((item, i) => {
+            const isParent = !!item.children;
+            return (
+                <MenuItem
+                    key={i}
+                    data={item}
+                    onClick={() => {
+                        if (isParent) {
+                            setHistory((pre) => [...pre, item.children]);
+                        } else {
+                            onChange(item);
+                        }
+                    }}
+                />
+            );
         });
     };
     return (
@@ -23,7 +35,16 @@ function Menu({ children, items = [] }) {
             placement="bottom-end"
             render={(attrs) => (
                 <div className={cx('content')} tabIndex="-1" {...attrs}>
-                    <PropWrapper>{renderItems()}</PropWrapper>
+                    <PropWrapper>
+                        {history.length > 1 && (
+                            <Header
+                                onBack={() => setHistory((prev) => prev.splice(-1))}
+                                title={'Language'}
+                            />
+                        )}
+                        {history.length > 1 && <div className={cx('content-select')}></div>}
+                        {renderItems()}
+                    </PropWrapper>
                 </div>
             )}
         >
