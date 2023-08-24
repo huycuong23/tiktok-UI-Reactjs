@@ -31,8 +31,24 @@ input,
 [tabindex] {
     border: none;
     outline: none;
+    background-color: transparent;
 }
 a[href] {
     color: var(--text-color);
     text-decoration: none;
+}
+// custom tippy styles
+//tippy arrows
+.tippy-box[data-placement^=bottom]>.tippy-arrow:before {
+    border-bottom-color: rgba(84,84,84, 0.92);
+
+}
+body .tippy-box {
+    font-size: 16rem;
+    line-height: 22rem;
+    border-radius: 14rem;
+    padding: 2px;
+    font-weight: 600;
+    background-color: rgba(84,84,84, 0.92);
+    color: rgb(255, 255,255);
 }

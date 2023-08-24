@@ -96,23 +96,15 @@
     }
 }
 
-.notication {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    margin-left: -150px;
-}
-.notication > * {
-    margin: 0 5px 0 5px;
-}
 .upload {
     display: flex;
     font-size: 20px;
     background-color: white;
     border: none;
-    height: 60%;
+    height: 38px;
     align-items: center;
-    padding: 15px;
+    padding: 10px;
+    margin-right: 8px;
     font-size: 16px;
     font-weight: 550;
     cursor: pointer;
@@ -127,6 +119,7 @@
 }
 .messeger {
     padding: 0 5px;
+    margin-right: 8px;
     cursor: pointer;
     font-size: 28px;
     cursor: pointer;
@@ -138,9 +131,13 @@
     font-size: 28px;
     cursor: pointer;
     opacity: 0.6;
+    margin-right: 8px;
+
 }
 .avatar {
     border-radius: 50%;
+    margin-right: 8px;
+
     cursor: pointer;
     width: 35px;
     margin-left: 10px;

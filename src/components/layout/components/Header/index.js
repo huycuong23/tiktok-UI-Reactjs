@@ -7,7 +7,9 @@ import Menu from '~/components/Prop/Menu';
 
 import classNames from 'classnames/bind';
 import React from 'react';
-import Tippy from '@tippyjs/react/headless';
+import HeadLessTippy from '@tippyjs/react/headless';
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faCircleXmark,
@@ -18,8 +20,10 @@ import {
     faEarthAsia,
     faCircleQuestion,
     faKeyboard,
+    faGear,
 } from '@fortawesome/free-solid-svg-icons';
-import { faPaperPlane, faEnvelope } from '@fortawesome/free-regular-svg-icons';
+import { faPaperPlane, faEnvelope, faUser } from '@fortawesome/free-regular-svg-icons';
+import { faBitcoin } from '@fortawesome/free-brands-svg-icons';
 
 const cx = classNames.bind(styles);
 const MENU_ITEM = [
@@ -56,18 +60,36 @@ function Header() {
     const handleChange = (menuItem) => {
         switch (menuItem.type) {
             case 'language':
-            // changer language handle
-            break;
+                // changer language handle
+                break;
             default:
         }
     };
+    const currentUser = true;
+    const userMenu = [
+        {
+            icon: <FontAwesomeIcon icon={faUser} />,
+            title: 'View Profile',
+            to: '/profile',
+        },
+        {
+            icon: <FontAwesomeIcon icon={faBitcoin} />,
+            title: 'Get Coin',
+            to: '/getcoin',
+        },
+        {
+            icon: <FontAwesomeIcon icon={faGear} />,
+            title: 'Settings',
+        },
+        ...MENU_ITEM,
+    ];
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
                 <div className={cx('logo')}>
                     <img src={images.logo} alt="logo tiktok" />
                 </div>
-                <Tippy
+                <HeadLessTippy
                     interactive={true}
                     visible={false}
                     render={(attrs) => (
@@ -97,34 +119,59 @@ function Header() {
                             <FontAwesomeIcon icon={faMagnifyingGlass} />
                         </button>
                     </div>
-                </Tippy>
-                {/* <div className={cx('notication')}>
-                    <button className={cx('upload')}>
-                        <FontAwesomeIcon icon={faPlus} />
-                        <p>Tải lên</p>
-                    </button>
-                    <FontAwesomeIcon className={cx('messeger')} icon={faPaperPlane} />
-                    <FontAwesomeIcon className={cx('notication-box')} icon={faEnvelope} />
-                    <img
-                        src="https://toigingiuvedep.vn/wp-content/uploads/2022/01/anh-meo-cute.jpg"
-                        alt="avatar"
-                        className={cx('avatar')}
-                    />
-                </div> */}
+                </HeadLessTippy>
                 <div className={cx('actions')}>
-                    <Button
-                        className={cx('actions-upload')}
-                        icon={<FontAwesomeIcon icon={faPlus} />}
-                        tranparent
-                        to="/upload"
-                    >
-                        Upload
-                    </Button>
-                    <Button primary>Log in</Button>
-                    <Menu items={MENU_ITEM} onChange={handleChange}>
-                        <div className={cx('actions_more')}>
-                            <FontAwesomeIcon icon={faEllipsisVertical} />
-                        </div>
+                    {currentUser ? (
+                        <>
+                            <Tippy content="Upload Video" placement="bottom" delay="[100, 300]">
+                                <button className={cx('upload')}>
+                                    <FontAwesomeIcon icon={faPlus} />
+                                    <p>Tải lên</p>
+                                </button>
+                            </Tippy>
+                            <Tippy content="Messenger" placement="bottom" delay="[100, 300]">
+                                <button>
+                                    <FontAwesomeIcon
+                                        className={cx('messeger')}
+                                        icon={faPaperPlane}
+                                    />
+                                </button>
+                            </Tippy>
+                            <Tippy content="Notification" placement="bottom" delay="[100, 300]">
+                                <button>
+                                    <FontAwesomeIcon
+                                        className={cx('notication-box')}
+                                        icon={faEnvelope}
+                                    />
+                                </button>
+                            </Tippy>
+                        </>
+                    ) : (
+                        <>
+                            <Button
+                                className={cx('actions-upload')}
+                                icon={<FontAwesomeIcon icon={faPlus} />}
+                                tranparent
+                                to="/upload"
+                            >
+                                Upload
+                            </Button>
+                            <Button primary>Log in</Button>
+                        </>
+                    )}
+
+                    <Menu currentUser items={currentUser ? userMenu : MENU_ITEM} onChange={handleChange}>
+                        {currentUser ? (
+                            <img
+                                src="https://toigingiuvedep.vn/wp-content/uploads/2022/01/anh-meo-cute.jpg"
+                                alt="avatar"
+                                className={cx('avatar')}
+                            />
+                        ) : (
+                            <div className={cx('actions_more')}>
+                                <FontAwesomeIcon icon={faEllipsisVertical} />
+                            </div>
+                        )}
                     </Menu>
                 </div>
             </div>
