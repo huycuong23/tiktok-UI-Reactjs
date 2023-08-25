@@ -4,6 +4,7 @@ import { Wrapper as PropWrapper } from '~/components/Prop';
 import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
 import Menu from '~/components/Prop/Menu';
+import Image from '~/components/Image';
 
 import classNames from 'classnames/bind';
 import React from 'react';
@@ -21,6 +22,7 @@ import {
     faCircleQuestion,
     faKeyboard,
     faGear,
+    faSignOut,
 } from '@fortawesome/free-solid-svg-icons';
 import { faPaperPlane, faEnvelope, faUser } from '@fortawesome/free-regular-svg-icons';
 import { faBitcoin } from '@fortawesome/free-brands-svg-icons';
@@ -80,8 +82,14 @@ function Header() {
         {
             icon: <FontAwesomeIcon icon={faGear} />,
             title: 'Settings',
+            to: '/settings',
         },
         ...MENU_ITEM,
+        {
+            icon: <FontAwesomeIcon icon={faSignOut} />,
+            title: 'Log out',
+            linetop: true,
+        }
     ];
     return (
         <header className={cx('wrapper')}>
@@ -162,7 +170,7 @@ function Header() {
 
                     <Menu currentUser items={currentUser ? userMenu : MENU_ITEM} onChange={handleChange}>
                         {currentUser ? (
-                            <img
+                            <Image
                                 src="https://toigingiuvedep.vn/wp-content/uploads/2022/01/anh-meo-cute.jpg"
                                 alt="avatar"
                                 className={cx('avatar')}

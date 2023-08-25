@@ -20,12 +20,13 @@
     }
 }
 .button-item {
-    padding: 15px;
+    padding: 15px 10px;
     font-weight: 500;
     width: 100%;
     text-align: start;
     display: block;
     border-radius: unset;
+    font-weight: 600;
     height: 48px;
     &:hover {
         background-color: rgba(22, 24, 35, 0.03);
@@ -58,7 +59,7 @@
 .content-select {
     height: 40px;
 }
-.footer {
+.linetop {
     padding-top: 10px;
-    border-top: 1px solid rgba(0, 0, 0, 0.329);
+    border-top: 1px solid rgba(0, 0, 0, 0.096);
 }

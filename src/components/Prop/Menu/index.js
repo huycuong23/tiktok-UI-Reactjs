@@ -5,7 +5,6 @@ import { Wrapper as PropWrapper } from '~/components/Prop';
 import MenuItem from './MenuItem';
 import Header from './Header';
 import { useState } from 'react';
-import Footer from './Footer';
 
 const cx = classNames.bind(styles);
 function Menu({ children, items = [], onChange, currentUser }) {
@@ -31,7 +30,7 @@ function Menu({ children, items = [], onChange, currentUser }) {
     };
     return (
         <Tippy
-            delay={[50, 700]}
+            delay={[50, 200]}
             interactive={true}
             placement="bottom-end"
             render={(attrs) => (
@@ -45,7 +44,6 @@ function Menu({ children, items = [], onChange, currentUser }) {
                         )}
                         {history.length > 1 && <div className={cx('content-select')}></div>}
                         {renderItems()}
-                        {currentUser ? <Footer title={"Log out"}/> : null}
                     </PropWrapper>
                 </div>
             )}
