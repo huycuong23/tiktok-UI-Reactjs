@@ -7,6 +7,7 @@ import styles from './Search.module.scss';
 import { Wrapper as PropWrapper } from '~/components/Prop';
 import AccountItem from '~/components/AccountItem';
 import { faCircleXmark, faSpinner, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { useDebounce } from '~/hooks';
 
 const cx = classNames.bind(styles);
 function Search() {
@@ -14,16 +15,18 @@ function Search() {
     const [searchText, setSearchText] = useState('');
     const [showResults, setShowResults] = useState(true);
     const [loading, setLoading] = useState(false);
+    const debouncedSearch = useDebounce(searchText, 500);
+
     const inputRef = useRef();
     useEffect(() => {
         if (!searchText.trim()) {
             setSreachresults([]);
-            return;     
+            return;
         }
         setLoading(true);
         fetch(
             `https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(
-                searchText,
+                debouncedSearch,
             )}&type=less`,
         )
             .then((res) => res.json())
@@ -31,7 +34,7 @@ function Search() {
                 setSreachresults(res.data);
                 setLoading(false);
             });
-    }, [searchText]);
+    }, [debouncedSearch]);
     const hanldeHideResults = () => setShowResults(false);
     return (
         <HeadLessTippy
@@ -42,7 +45,15 @@ function Search() {
                     <PropWrapper>
                         <h4 className={cx('search-title')}>Accounts</h4>
                         {searchResults.map((result) => {
-                            return <AccountItem key={result.id} data={result} onClick={() => {setShowResults(false)}}/>;
+                            return (
+                                <AccountItem
+                                    key={result.id}
+                                    data={result}
+                                    onClick={() => {
+                                        setShowResults(false);
+                                    }}
+                                />
+                            );
                         })}
                     </PropWrapper>
                 </div>
