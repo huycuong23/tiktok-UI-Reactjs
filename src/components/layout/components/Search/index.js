@@ -13,13 +13,26 @@ function Search() {
     const [searchResults, setSreachresults] = useState([]);
     const [searchText, setSearchText] = useState('');
     const [showResults, setShowResults] = useState(true);
+    const [loading, setLoading] = useState(false);
     const inputRef = useRef();
     useEffect(() => {
-        setTimeout(() => {
-            setSreachresults([1, 4, 6]);
-        }, 0);
-    });
-    const hanldeHideResults = () => setShowResults(false)
+        if (!searchText.trim()) {
+            setSreachresults([]);
+            return;     
+        }
+        setLoading(true);
+        fetch(
+            `https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(
+                searchText,
+            )}&type=less`,
+        )
+            .then((res) => res.json())
+            .then((res) => {
+                setSreachresults(res.data);
+                setLoading(false);
+            });
+    }, [searchText]);
+    const hanldeHideResults = () => setShowResults(false);
     return (
         <HeadLessTippy
             interactive={true}
@@ -28,10 +41,9 @@ function Search() {
                 <div className={cx('search-result')} tabIndex="-1" {...attrs}>
                     <PropWrapper>
                         <h4 className={cx('search-title')}>Accounts</h4>
-                        <AccountItem />
-                        <AccountItem />
-                        <AccountItem />
-                        <AccountItem />
+                        {searchResults.map((result) => {
+                            return <AccountItem key={result.id} data={result} onClick={() => {setShowResults(false)}}/>;
+                        })}
                     </PropWrapper>
                 </div>
             )}
@@ -48,18 +60,18 @@ function Search() {
                     spellCheck={false}
                     onFocus={() => setShowResults(true)}
                 />
-                {!!searchText &&
-                    ((
-                        <button
-                            onClick={() => {
-                                setSearchText('');
-                                inputRef.current.focus();
-                            }}
-                            className={cx('search-clr')}
-                        >
-                            <FontAwesomeIcon icon={faCircleXmark} />
-                        </button>
-                    ) || <FontAwesomeIcon className={cx('search-ld')} icon={faSpinner} />)}
+                {!!searchText && !loading && (
+                    <button
+                        onClick={() => {
+                            setSearchText('');
+                            inputRef.current.focus();
+                        }}
+                        className={cx('search-clr')}
+                    >
+                        <FontAwesomeIcon icon={faCircleXmark} />
+                    </button>
+                )}
+                {loading && <FontAwesomeIcon className={cx('search-ld')} icon={faSpinner} />}
                 <button className={cx('search-btn')}>
                     <FontAwesomeIcon icon={faMagnifyingGlass} />
                 </button>
