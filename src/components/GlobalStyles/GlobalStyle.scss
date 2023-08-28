@@ -10,9 +10,10 @@ html {
 :root {
     --text-color: black;
     --primary: rgb(254, 44, 85);
+    --font-family: "Lato", sans-serif;
 }
 body {
-    font-family: 'Lato', sans-serif;
+    font-family: var(--font-family);
     font-size: 24rem;
     line-height: 15rem;
     text-rendering: optimizeSpeed;

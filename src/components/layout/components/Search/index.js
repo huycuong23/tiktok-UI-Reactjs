@@ -36,6 +36,13 @@ function Search() {
         fetchApi();
     }, [debouncedSearch]);
     const hanldeHideResults = () => setShowResults(false);
+    const handleOnchangeInput = (e) => {
+        const value = e.target.value;
+        if(value.startsWith(" ") ) {
+            return;
+        }
+        setSearchText(value);
+    }
     return (
         <HeadLessTippy
             interactive={true}
@@ -64,7 +71,7 @@ function Search() {
                 <input
                     ref={inputRef}
                     value={searchText}
-                    onChange={(e) => setSearchText(e.target.value)}
+                    onChange={handleOnchangeInput}
                     className={cx('search-inp')}
                     type="text"
                     placeholder="Search accounts and videos "
@@ -83,7 +90,7 @@ function Search() {
                     </button>
                 )}
                 {loading && <FontAwesomeIcon className={cx('search-ld')} icon={faSpinner} />}
-                <button className={cx('search-btn')}>
+                <button className={cx('search-btn')} onMouseDown={(e) => e.preventDefault()}>
                     <FontAwesomeIcon icon={faMagnifyingGlass} />
                 </button>
             </div>

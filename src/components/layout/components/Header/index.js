@@ -4,6 +4,8 @@ import Sreach from '~/components/layout/components/Search';
 import Button from '~/components/Button';
 import Menu from '~/components/Prop/Menu';
 import Image from '~/components/Image';
+import routesConfig from '~/config/routes';
+
 
 
 import classNames from 'classnames/bind';
@@ -71,17 +73,17 @@ function Header() {
         {
             icon: <FontAwesomeIcon icon={faUser} />,
             title: 'View Profile',
-            to: '/profile',
+            to: routesConfig.profile,
         },
         {
             icon: <FontAwesomeIcon icon={faBitcoin} />,
             title: 'Get Coin',
-            to: '/getcoin',
+            to: routesConfig.getcoin,
         },
         {
             icon: <FontAwesomeIcon icon={faGear} />,
             title: 'Settings',
-            to: '/settings',
+            to: routesConfig.setting,
         },
         ...MENU_ITEM,
         {
@@ -93,7 +95,7 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <Link to={"/"} className={cx('logo')}>
+                <Link to={routesConfig.root} className={cx('logo')}>
                     <img src={images.logo} alt="logo tiktok" />
                 </Link>
                 <Sreach />
