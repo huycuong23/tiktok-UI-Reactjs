@@ -22,6 +22,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { faPaperPlane, faEnvelope, faUser } from '@fortawesome/free-regular-svg-icons';
 import { faBitcoin } from '@fortawesome/free-brands-svg-icons';
+import { Link } from 'react-router-dom';
 
 
 const cx = classNames.bind(styles);
@@ -92,9 +93,9 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <div className={cx('logo')}>
+                <Link to={"/"} className={cx('logo')}>
                     <img src={images.logo} alt="logo tiktok" />
-                </div>
+                </Link>
                 <Sreach />
                 <div className={cx('actions')}>
                     {currentUser ? (
