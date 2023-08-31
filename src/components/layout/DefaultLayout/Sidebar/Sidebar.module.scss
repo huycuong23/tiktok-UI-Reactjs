@@ -5,13 +5,16 @@
 }
 .sidebar-scrool {
     position: fixed;
-    overflow-y: scroll;
+    overflow-y: overlay;
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
     max-height: 100vh;
     width: 220px;
     padding-left: 10px;
+    z-index: 5;
+
+    // sidebar hide
     mask-image: linear-gradient(to top, transparent, black),
         linear-gradient(to left, transparent 17px, black 17px);
     mask-size: 100% 20000px;
@@ -22,6 +25,8 @@
     -webkit-mask-position: left bottom;
     transition: mask-position 0.3s, -webkit-mask-position 0.3s;
 }
+// sidebar
 .sidebar-scrool:hover {
+    mask-position: left top;
     -webkit-mask-position: left top;
 }

@@ -8,9 +8,17 @@ html {
     box-sizing: border-box;
 }
 :root {
+
+    //color
     --text-color: black;
     --primary: rgb(254, 44, 85);
+
+    //font
     --font-family: "Lato", sans-serif;
+
+    //size
+    --header-height: 60px;
+    --item-menu-height: 40px;
 }
 body {
     font-family: var(--font-family);

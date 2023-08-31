@@ -7,7 +7,7 @@ import Header from './Header';
 import { useState } from 'react';
 
 const cx = classNames.bind(styles);
-function Menu({hideOnClick =false, children, items = [], onChange, currentUser }) {
+function Menu({ hideOnClick = false, children, items = [], onChange }) {
     const [history, setHistory] = useState([{ data: items }]);
     const current = history[history.length - 1];
     const renderItems = () => {
@@ -39,12 +39,11 @@ function Menu({hideOnClick =false, children, items = [], onChange, currentUser }
                     <PropWrapper>
                         {history.length > 1 && (
                             <Header
+                                title="Language"
                                 onBack={() => setHistory((prev) => prev.splice(-1))}
-                                title={'Language'}
                             />
                         )}
-                        {history.length > 1 && <div className={cx('content-select')}></div>}
-                        {renderItems()}
+                        <div className={cx('menu-body')}>{renderItems()}</div>
                     </PropWrapper>
                 </div>
             )}

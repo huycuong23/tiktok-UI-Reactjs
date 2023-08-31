@@ -6,8 +6,6 @@ import Menu from '~/components/Prop/Menu';
 import Image from '~/components/Image';
 import routesConfig from '~/config/routes';
 
-
-
 import classNames from 'classnames/bind';
 import React from 'react';
 import Tippy from '@tippyjs/react';
@@ -21,11 +19,11 @@ import {
     faKeyboard,
     faGear,
     faSignOut,
+    faUser,
 } from '@fortawesome/free-solid-svg-icons';
-import { faPaperPlane, faEnvelope, faUser } from '@fortawesome/free-regular-svg-icons';
+import { faPaperPlane, faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import { faBitcoin } from '@fortawesome/free-brands-svg-icons';
 import { Link } from 'react-router-dom';
-
 
 const cx = classNames.bind(styles);
 const MENU_ITEM = [
@@ -59,7 +57,6 @@ const MENU_ITEM = [
     },
 ];
 function Header() {
-    
     const handleChange = (menuItem) => {
         switch (menuItem.type) {
             case 'language':
@@ -90,7 +87,7 @@ function Header() {
             icon: <FontAwesomeIcon icon={faSignOut} />,
             title: 'Log out',
             linetop: true,
-        }
+        },
     ];
     return (
         <header className={cx('wrapper')}>
@@ -139,7 +136,10 @@ function Header() {
                         </>
                     )}
 
-                    <Menu currentUser items={currentUser ? userMenu : MENU_ITEM} onChange={handleChange}>
+                    <Menu
+                        items={currentUser ? userMenu : MENU_ITEM}
+                        onChange={handleChange}
+                    >
                         {currentUser ? (
                             <Image
                                 src="https://toigingiuvedep.vn/wp-content/uploads/2022/01/anh-meo-cute.jpg"

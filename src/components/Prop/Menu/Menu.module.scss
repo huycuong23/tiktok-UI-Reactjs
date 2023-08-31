@@ -1,11 +1,6 @@
 .content {
     width: 224px;
     position: relative;
-    max-height: 500px;
-    overflow-y: scroll;
-    &::-webkit-scrollbar {
-        display: none;
-    }
     &::after {
         content: '';
         border-top: 10px solid transparent;
@@ -19,6 +14,11 @@
         transform: translateX(-40%) translateY(-90%);
     }
 }
+
+.menu-body {
+    overflow-y: overlay;
+    max-height: calc(100vh - 400px);
+}
 .button-item {
     padding: 15px 10px;
     font-weight: 500;
@@ -26,27 +26,31 @@
     text-align: start;
     display: block;
     border-radius: unset;
-    font-weight: 600;
+    font-weight: 501;
+    font-family: var(--font-family);
     height: 48px;
     &:hover {
         background-color: rgba(22, 24, 35, 0.03);
     }
 }
 .header {
+    margin-top: -10px;
+    border-radius: 10px 10px 0 0;
     display: flex;
     align-items: center;
-    position: fixed;
     background-color: white;
     width: 100%;
     top: 0;
 }
 
 .back-btn {
+    border-radius: 10px 0 0 0;
     background-color: transparent;
     width: 50px;
     height: 40px;
     transform: translateX(20%);
     cursor: pointer;
+    margin-left: -10px;
     &:hover {
         background-color: rgba(22, 24, 35, 0.03);
     }
@@ -54,12 +58,8 @@
 .header-title {
     font-size: 18px;
     margin: 0;
-    transform: translateX(30%);
-}
-.content-select {
-    height: 40px;
+    transform: translateX(40%);
 }
 .linetop {
-    padding-top: 10px;
     border-top: 1px solid rgba(0, 0, 0, 0.096);
 }

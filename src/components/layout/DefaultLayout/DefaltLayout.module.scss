@@ -5,15 +5,15 @@
 }
 
 .container {
-    margin: 60px 0 0 0;
+    margin-top: var(--header-height);
     width: 100%;
     display: flex;
-    
+     
 }
 .content {
     width: 100%;
     height: unset;
-    flex: 1;
+    flex: 1; 
     display: flex;
     justify-content: flex-start;
 }

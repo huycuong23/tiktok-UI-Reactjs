@@ -30,7 +30,7 @@ function Search() {
 
             const searchRs = await searchServices(debouncedSearch);
             setSreachresults(searchRs);
-            
+
             setLoading(false);
         };
         fetchApi();
@@ -38,63 +38,68 @@ function Search() {
     const hanldeHideResults = () => setShowResults(false);
     const handleOnchangeInput = (e) => {
         const value = e.target.value;
-        if(value.startsWith(" ") ) {
+        if (value.startsWith(' ')) {
             return;
         }
         setSearchText(value);
-    }
+    };
     return (
-        <HeadLessTippy
-            interactive={true}
-            visible={showResults && searchResults.length > 0}
-            render={(attrs) => (
-                <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-                    <PropWrapper>
-                        <h4 className={cx('search-title')}>Accounts</h4>
-                        {searchResults.map((result) => {
-                            return (
-                                <AccountItem
-                                    key={result.id}
-                                    data={result}
-                                    onClick={() => {
-                                        setShowResults(false);
-                                    }}
-                                />
-                            );
-                        })}
-                    </PropWrapper>
-                </div>
-            )}
-            onClickOutside={hanldeHideResults}
-        >
-            <div className={cx('search')}>
-                <input
-                    ref={inputRef}
-                    value={searchText}
-                    onChange={handleOnchangeInput}
-                    className={cx('search-inp')}
-                    type="text"
-                    placeholder="Search accounts and videos "
-                    spellCheck={false}
-                    onFocus={() => setShowResults(true)}
-                />
-                {!!searchText && !loading && (
-                    <button
-                        onClick={() => {
-                            setSearchText('');
-                            inputRef.current.focus();
-                        }}
-                        className={cx('search-clr')}
-                    >
-                        <FontAwesomeIcon icon={faCircleXmark} />
-                    </button>
+        //Using a wrapper <div> tag around the reference element solves
+        //this by creating a new parentNode context.
+        <div>
+            <HeadLessTippy
+                interactive={true}
+                placement="top"
+                visible={showResults && searchResults.length > 0}
+                render={(attrs) => (
+                    <div className={cx('search-result')} tabIndex="-1" {...attrs}>
+                        <PropWrapper>
+                            <h4 className={cx('search-title')}>Accounts</h4>
+                            {searchResults.map((result) => {
+                                return (
+                                    <AccountItem
+                                        key={result.id}
+                                        data={result}
+                                        onClick={() => {
+                                            setShowResults(false);
+                                        }}
+                                    />
+                                );
+                            })}
+                        </PropWrapper>
+                    </div>
                 )}
-                {loading && <FontAwesomeIcon className={cx('search-ld')} icon={faSpinner} />}
-                <button className={cx('search-btn')} onMouseDown={(e) => e.preventDefault()}>
-                    <FontAwesomeIcon icon={faMagnifyingGlass} />
-                </button>
-            </div>
-        </HeadLessTippy>
+                onClickOutside={hanldeHideResults}
+            >
+                <div className={cx('search')}>
+                    <input
+                        ref={inputRef}
+                        value={searchText}
+                        onChange={handleOnchangeInput}
+                        className={cx('search-inp')}
+                        type="text"
+                        placeholder="Search accounts and videos "
+                        spellCheck={false}
+                        onFocus={() => setShowResults(true)}
+                    />
+                    {!!searchText && !loading && (
+                        <button
+                            onClick={() => {
+                                setSearchText('');
+                                inputRef.current.focus();
+                            }}
+                            className={cx('search-clr')}
+                        >
+                            <FontAwesomeIcon icon={faCircleXmark} />
+                        </button>
+                    )}
+                    {loading && <FontAwesomeIcon className={cx('search-ld')} icon={faSpinner} />}
+                    <button className={cx('search-btn')} onMouseDown={(e) => e.preventDefault()}>
+                        <FontAwesomeIcon icon={faMagnifyingGlass} />
+                    </button>
+                </div>
+            </HeadLessTippy>
+        </div  >
     );
 }
 
