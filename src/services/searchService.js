@@ -1,4 +1,5 @@
 import * as httpRequest from '~/utils/httpRequest';
+import PropTypes from 'prop-types';
 
 export const search = async (q, type) => {
     try {
@@ -13,3 +14,7 @@ export const search = async (q, type) => {
         console.log("error");
     }
 };
+search.propTypes = {
+    q: PropTypes.string,
+    type: PropTypes.string,
+}

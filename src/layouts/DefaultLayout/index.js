@@ -3,6 +3,7 @@ import classNames from 'classnames/bind';
 
 import Header from '../components/Header';
 import Sidebar from './Sidebar';
+import PropTypes from 'prop-types';
 
 const cx = classNames.bind(styles);
 function DefaultLayout({ children }) {
@@ -16,5 +17,7 @@ function DefaultLayout({ children }) {
         </div>
     );
 }
-
+DefaultLayout.propTypes = {
+    children: PropTypes.node
+}
 export default DefaultLayout;
