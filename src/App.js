@@ -3,7 +3,7 @@ import { publicRoutes } from '~/routes';
 import { Fragment } from 'react';
 
 // layouts
-import { DefaultLayout } from '~/components/layout';
+import DefaultLayout from '~/layouts';
 
 function App() {
     return (

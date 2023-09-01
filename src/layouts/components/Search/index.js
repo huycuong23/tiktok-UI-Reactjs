@@ -9,7 +9,7 @@ import { Wrapper as PropWrapper } from '~/components/Prop';
 import AccountItem from '~/components/AccountItem';
 import { faCircleXmark, faSpinner, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { useDebounce } from '~/hooks';
-import { search as searchServices } from '~/apiServices/searchServices';
+import { search as searchServices } from '~/services/searchService';
 
 const cx = classNames.bind(styles);
 function Search() {

@@ -1,10 +1,10 @@
 import styles from './Header.module.scss';
 import images from '~/assets/images';
-import Sreach from '~/components/layout/components/Search';
+import Sreach from '~/layouts/components/Search';
 import Button from '~/components/Button';
 import Menu from '~/components/Prop/Menu';
 import Image from '~/components/Image';
-import routesConfig from '~/config/routes';
+import config from '~/config';
 
 import classNames from 'classnames/bind';
 import React from 'react';
@@ -70,17 +70,17 @@ function Header() {
         {
             icon: <FontAwesomeIcon icon={faUser} />,
             title: 'View Profile',
-            to: routesConfig.profile,
+            to: config.routes.profile,
         },
         {
             icon: <FontAwesomeIcon icon={faBitcoin} />,
             title: 'Get Coin',
-            to: routesConfig.getcoin,
+            to: config.routes.getcoin,
         },
         {
             icon: <FontAwesomeIcon icon={faGear} />,
             title: 'Settings',
-            to: routesConfig.setting,
+            to: config.routes.setting,
         },
         ...MENU_ITEM,
         {
@@ -92,7 +92,7 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <Link to={routesConfig.root} className={cx('logo')}>
+                <Link to={config.routes.root} className={cx('logo')}>
                     <img src={images.logo} alt="logo tiktok" />
                 </Link>
                 <Sreach />
