@@ -30,26 +30,31 @@ function Menu({ hideOnClick = false, children, items = [], onChange }) {
             );
         });
     };
+    const handleBack = () => {
+        setHistory((prev) => prev.splice(-1))
+    }
+    const renderResults = (attrs) => (
+        <div className={cx('content')} tabIndex="-1" {...attrs}>
+            <PropWrapper>
+                {history.length > 1 && (
+                    <Header title="Language" onBack={handleBack} />
+                )}
+                <div className={cx('menu-body')}>{renderItems()}</div>
+            </PropWrapper>
+        </div>
+    );
+    const handleBackFirstPage = () => {
+        setHistory((prev) => prev.slice(0, 1));
+    }
+
     return (
         <Tippy
             hideOnClick={hideOnClick}
             delay={[50, 200]}
             interactive={true}
             placement="bottom-end"
-            render={(attrs) => (
-                <div className={cx('content')} tabIndex="-1" {...attrs}>
-                    <PropWrapper>
-                        {history.length > 1 && (
-                            <Header
-                                title="Language"
-                                onBack={() => setHistory((prev) => prev.splice(-1))}
-                            />
-                        )}
-                        <div className={cx('menu-body')}>{renderItems()}</div>
-                    </PropWrapper>
-                </div>
-            )}
-            onHide={() => setHistory((prev) => prev.slice(0, 1))}
+            render={renderResults}
+            onHide={handleBackFirstPage}
         >
             {children}
         </Tippy>

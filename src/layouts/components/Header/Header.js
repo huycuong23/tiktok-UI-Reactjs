@@ -132,7 +132,7 @@ function Header() {
                             >
                                 Upload
                             </Button>
-                            <Button primary>Log in</Button>
+                            <Button primary >Log in</Button>
                         </>
                     )}
 

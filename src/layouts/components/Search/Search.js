@@ -17,24 +17,24 @@ function Search() {
     const [searchText, setSearchText] = useState('');
     const [showResults, setShowResults] = useState(true);
     const [loading, setLoading] = useState(false);
-    const debouncedSearch = useDebounce(searchText, 500);
+    const debouncedValue = useDebounce(searchText, 500);
 
     const inputRef = useRef();
     useEffect(() => {
-        if (!debouncedSearch.trim()) {
+        if (!debouncedValue.trim()) {
             setSreachresults([]);
             return;
         }
         const fetchApi = async () => {
             setLoading(true);
 
-            const searchRs = await searchServices(debouncedSearch);
+            const searchRs = await searchServices(debouncedValue);
             setSreachresults(searchRs);
 
             setLoading(false);
         };
         fetchApi();
-    }, [debouncedSearch]);
+    }, [debouncedValue]);
     const hanldeHideResults = () => setShowResults(false);
     const handleOnchangeInput = (e) => {
         const value = e.target.value;
