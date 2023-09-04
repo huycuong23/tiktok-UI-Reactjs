@@ -9,11 +9,9 @@
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
-    max-height: 100vh;
+    max-height: calc(100% - 60px);
     width: 220px;
-    padding-left: 10px;
     z-index: 5;
-
     // sidebar hide
     mask-image: linear-gradient(to top, transparent, black),
         linear-gradient(to left, transparent 17px, black 17px);
@@ -29,4 +27,44 @@
 .sidebar-scrool:hover {
     mask-position: left top;
     -webkit-mask-position: left top;
+}
+.line {
+    margin: -12px 2px 2px 18px;
+    opacity: .2;
+}
+.suggest {
+    margin-left: 12px;
+}
+.heading-suggest {
+    font-size: 14rem;
+    padding: 0 8px;
+    opacity: 0.5;
+}
+
+.footer-suggest {
+    font-size: 14rem;
+    color: var(--primary);
+    cursor: pointer;
+    padding: 15px 8px;
+    margin: 0 0 18px 0;
+}
+.sidebar-footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-left: 12px;
+    font-size: 12rem;
+    margin-top: 5px;
+    & > * {
+        padding: 5px
+    }
+
+    & > *:hover {
+        text-decoration: underline;
+    }
+    &:last-child, 
+    &:last-child:hover {
+        padding-bottom: 20px;
+        text-decoration: none;
+    }
 }
