@@ -4,6 +4,8 @@ const routes = {
     profile: "/:user",
     upload: "/upload",
     search: "/search",
+    live: "/live",
+    discover: "/discover",
 }
 
 

@@ -1,0 +1,30 @@
+.Wrapper {
+    display: block;
+    width: 100%;
+    padding: 20px 0 26px 8px;
+}
+.menu-item {
+    padding: 12px;
+    margin: 2px 0;
+    font-size: 22rem;
+    font-weight: 501;
+    display: flex;
+    border-radius: 4px;
+    justify-content: flex-start;
+    align-items: center;
+    transition: background-color ease-in-out 200ms;
+    color: var(--text-color);
+    &:hover {
+        background-color: rgba($color: #ccc, $alpha: 0.3);
+    }
+    &.active {
+        color: var(--primary);
+    }
+}
+.icon {
+    width: 12.5%;
+    font-size: 22rem;
+}
+.title {
+    margin-left: 14px;
+}
