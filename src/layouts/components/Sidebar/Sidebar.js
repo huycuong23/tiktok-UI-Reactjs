@@ -52,34 +52,38 @@ function Sidebar() {
                     <h3 className={cx('heading-suggest')}>Các tài khoản đang follow</h3>
                     {accounts &&
                         accounts.map((account) => (
-                            <SuggestedAccount key={account.id} data={account} />
+                                <SuggestedAccount key={account.id} data={account} />
                         ))}
                     <div>
-                    {all === "less" ? ( <h3
-                            onClick={() => {
-                                setAll('more');
-                            }}
-                            className={cx('footer-suggest')}
-                        >
-                            See all
-                        </h3>) :  <h3
-                            onClick={() => {
-                                setAll('less');
-                            }}
-                            className={cx('footer-suggest')}
-                        >
-                            See less
-                        </h3>}
+                        {all === 'less' ? (
+                            <h3
+                                onClick={() => {
+                                    setAll('more');
+                                }}
+                                className={cx('footer-suggest')}
+                            >
+                                See all
+                            </h3>
+                        ) : (
+                            <h3
+                                onClick={() => {
+                                    setAll('less');
+                                }}
+                                className={cx('footer-suggest')}
+                            >
+                                See less
+                            </h3>
+                        )}
                     </div>
                 </div>
                 <hr className={cx('line')} />
-                <div className={cx("sidebar-footer")}>
+                <div className={cx('sidebar-footer')}>
                     <Footer title="Giới thiệu" to="/" />
                     <Footer title="Bảng tin" href="./" />
                     <Footer title="Liên hệ" href="./" />
                     <Footer title="Sự nghiệp" href="./" />
                 </div>
-                <div className={cx("sidebar-footer")}>
+                <div className={cx('sidebar-footer')}>
                     <Footer title="TikTok for Good" to="/" />
                     <Footer title="Quảng cáo" href="./" />
                     <Footer title="Developers" href="./" />
@@ -87,7 +91,7 @@ function Sidebar() {
                     <Footer title="TikTok Embeds" href="./" />
                     <Footer title="TikTok Rewards" href="./" />
                 </div>
-                <div className={cx("sidebar-footer")}>
+                <div className={cx('sidebar-footer')}>
                     <Footer title="Trợ giúp" to="/" />
                     <Footer title="An toàn" href="./" />
                     <Footer title="Điều khoản" href="./" />
@@ -95,11 +99,11 @@ function Sidebar() {
                     <Footer title="Cổng thông tin Tác giả" href="./" />
                     <Footer title="Hướng dẫn Cộng đồng" href="./" />
                 </div>
-                <div className={cx("sidebar-footer")}>
+                <div className={cx('sidebar-footer')}>
                     <Footer title="Thêm" to="/" />
                 </div>
-                <div className={cx("sidebar-footer")}>
-                    <Footer title="© 2023 TikTok"/>
+                <div className={cx('sidebar-footer')}>
+                    <Footer title="© 2023 TikTok" />
                 </div>
             </div>
         </aside>

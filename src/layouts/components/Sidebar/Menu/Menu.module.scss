@@ -28,3 +28,58 @@
 .title {
     margin-left: 14px;
 }
+.box {
+    width: 250px;
+}
+.header {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 20px;
+    margin: 6px 20px 0 20px;
+
+}
+.avatar {
+    width: 45px;
+    height: 45px;
+    background-clip: content-box;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-radius: 50px;
+}
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+.name {
+    margin: 0 0 5px 0;
+    font-size: 18px;
+    font-weight: 600;
+    font-weight: 501;
+    span {
+        margin-right: 5px;
+    }
+    .check-circle {
+        font-size: 15px;
+        opacity: 1;
+        color: rgb(32, 213, 236);
+    }
+}
+.user-name {
+    font-size: 18px;
+    opacity: 0.8;
+}
+.follow {
+    display: flex;
+}
+.follow-text {
+    font-size: 16rem;
+    font-weight: 501;
+    margin: 5px 0 5px 20px;
+}
