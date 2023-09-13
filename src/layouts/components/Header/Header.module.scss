@@ -42,14 +42,14 @@
     margin-top: 18px;
 }
 .messeger {
-    padding: 0 5px;
     margin-right: 4px;
     cursor: pointer;
     font-size: 28px;
     opacity: 0.6;
+    width: 26px;
+    padding:0 5px;
 }
 .notication-box {
-    padding: 0 5px;
     cursor: pointer;
     font-size: 28px;
     opacity: 0.6;
@@ -58,7 +58,7 @@
 
 }
 .avatar {
-    border-radius: 50%;
+    border-radius: 50px;
     margin-right: 4px;
     cursor: pointer;
     width: 35px;
