@@ -42,8 +42,8 @@ const PropUp = ({ children, data }) => {
                                 <span className={cx('user-name')}>{data.nickname}</span>
                             </div>
                             <div className={cx("follow")}>
-                                <p className={cx("follow-text")}>{data.followers_count} Followers</p>
-                                <p className={cx("follow-text")}>{data.likes_count} Likes</p>
+                                <p className={cx("follow-text")}>{data.followers_count} <span>Followers</span></p>
+                                <p className={cx("follow-text")}>{data.likes_count} <span>Likes</span></p>
                             </div>
                         </Wrapper>
                     </div>

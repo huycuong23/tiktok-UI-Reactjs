@@ -11,9 +11,7 @@
      
 }
 .content {
-    width: 100%;
+    display: block;
     height: unset;
-    flex: 1; 
-    display: flex;
-    justify-content: center;
+    margin: 0 auto;
 }
